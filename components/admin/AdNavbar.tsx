@@ -16,6 +16,11 @@ import {
   SearchIcon,
   UserCircleIcon,
 } from "lucide-react";
+import {
+  LoginLink,
+  LogoutLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 export default function AdNavbar() {
   return (
@@ -80,23 +85,32 @@ export default function AdNavbar() {
                 <Package2Icon className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
-              <Link className="hover:text-foreground" href="#">
+              <Link className="hover:text-foreground" href="/admin">
                 Dashboard
               </Link>
-              <Link className="text-foreground hover:text-foreground" href="#">
+              <Link
+                className="text-foreground hover:text-foreground"
+                href="/admin/orders"
+              >
                 Orders
               </Link>
-              <Link className="text-foreground hover:text-foreground" href="#">
+              <Link
+                className="text-foreground hover:text-foreground"
+                href="/admin/products"
+              >
                 Products
               </Link>
-              <Link className="text-foreground hover:text-foreground" href="#">
+              <Link
+                className="text-foreground hover:text-foreground"
+                href="/admin/categories"
+              >
                 Categories
               </Link>
-              <Link className="text-foreground hover:text-foreground" href="#">
+              <Link
+                className="text-foreground hover:text-foreground"
+                href="/admin/customers"
+              >
                 Customers
-              </Link>
-              <Link className="text-foreground hover:text-foreground" href="#">
-                Sales
               </Link>
             </nav>
           </SheetContent>
@@ -125,7 +139,15 @@ export default function AdNavbar() {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <LogoutLink>Logout</LogoutLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <LoginLink>Login</LoginLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <RegisterLink>Signup</RegisterLink>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
