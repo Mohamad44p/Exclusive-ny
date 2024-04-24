@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import db from "@/db/db";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
 
 async function getSalesData() {
   const data = await db.order.aggregate({
@@ -61,6 +63,16 @@ async function getProductData() {
 }
 
 export default async function AdminDashboard() {
+  const { isAuthenticated, getPermission } = getKindeServerSession();
+  const isLoggedIn = await isAuthenticated();
+  if (!isLoggedIn) {
+    redirect("/api/auth/login");
+  }
+
+  const requiredPermission = await getPermission("admin-pages");
+  if (!requiredPermission?.isGranted) {
+    redirect("/");
+  }
   const [salesData, userData, productData] = await Promise.all([
     getSalesData(),
     getUserData(),

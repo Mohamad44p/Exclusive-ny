@@ -22,6 +22,7 @@ import {
   RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import CusNavShowAdmin from "./CusNavShowAdmin";
 
 export default async function CusNavbar() {
   const { getUser } = getKindeServerSession();
@@ -58,6 +59,7 @@ export default async function CusNavbar() {
           >
             Products
           </Link>
+          <CusNavShowAdmin/>
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -96,6 +98,12 @@ export default async function CusNavbar() {
                 href="/products"
               >
                 Products
+              </Link>
+              <Link
+                className="text-foreground hover:text-foreground"
+                href="/admin"
+              >
+                Admin Page
               </Link>
             </nav>
           </SheetContent>

@@ -19,10 +19,23 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import db from "@/db/db";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { CheckCircle, MoreVertical, XCircle } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-export default function AdminProductPage() {
+export default async function AdminProductPage() {
+  const { isAuthenticated, getPermission } = getKindeServerSession();
+  const isLoggedIn = await isAuthenticated();
+  if (!isLoggedIn) {
+    redirect("/api/auth/login");
+  }
+
+  const requiredPermission = await getPermission("admin-pages");
+  if (!requiredPermission?.isGranted) {
+    redirect("/");
+  }
+  
   return (
     <>
       <div className="flex justify-between items-center gap-4">
@@ -99,7 +112,7 @@ async function ProductsTable() {
                     id={product.id}
                     isAvailableForPurchase={product.isAvailableForPurchase}
                   />
-                    <DropdownMenuSeparator />
+                  <DropdownMenuSeparator />
                   <DeleteDropdownItem
                     id={product.id}
                     disabled={product._count.orders > 0}
@@ -113,6 +126,3 @@ async function ProductsTable() {
     </Table>
   );
 }
-
-
-

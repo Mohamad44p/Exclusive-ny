@@ -90,3 +90,12 @@ export async function deleteProduct(id: string) {
   revalidatePath("/");
   revalidatePath("/admin/products");
 }
+
+export async function deleteUser(id: string) {
+  const user = await db.user.delete({ where: { id } });
+
+  if (user == null) return notFound();
+
+  revalidatePath("/");
+  revalidatePath("/admin/customers");
+}
