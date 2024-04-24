@@ -23,7 +23,7 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-export default async function AdNavbar() {
+export default async function CusNavbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
@@ -34,38 +34,29 @@ export default async function AdNavbar() {
             className="flex items-center gap-2 text-lg font-semibold md:text-base"
             href="/admin"
           >
-            <Package2Icon className="h-6 w-6" />
+            <h1 className="text-xl font-bold flex items-center gap-x-2">
+              <Package2Icon className="h-6 w-6" />
+              Exclusive
+            </h1>
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Link
             className="text-foreground transition-colors hover:text-foreground"
-            href="/admin"
+            href="/"
           >
-            Dashboard
+            Home
           </Link>
           <Link
             className="text-foreground transition-colors hover:text-foreground"
-            href="/admin/orders"
+            href="/orders"
           >
             Orders
           </Link>
           <Link
             className="text-foreground transition-colors hover:text-foreground"
-            href="/admin/products"
+            href="/products"
           >
             Products
-          </Link>
-          <Link
-            className="text-foreground transition-colors hover:text-foreground"
-            href="/admin/categories"
-          >
-            Categories
-          </Link>
-          <Link
-            className="text-foreground transition-colors hover:text-foreground"
-            href="/admin/customers"
-          >
-            Customers
           </Link>
         </nav>
         <Sheet>
@@ -83,37 +74,28 @@ export default async function AdNavbar() {
             <nav className="grid gap-6 text-lg font-medium">
               <Link
                 className="flex items-center gap-2 text-lg font-semibold"
-                href="#"
+                href="/"
               >
-                <Package2Icon className="h-6 w-6" />
+                <h1 className="text-xl font-bold flex items-center gap-x-2">
+                  <Package2Icon className="h-6 w-6" />
+                  Exclusive
+                </h1>
                 <span className="sr-only">Acme Inc</span>
               </Link>
-              <Link className="hover:text-foreground" href="/admin">
-                Dashboard
+              <Link className="hover:text-foreground" href="/">
+                Home
               </Link>
               <Link
                 className="text-foreground hover:text-foreground"
-                href="/admin/orders"
+                href="/orders"
               >
                 Orders
               </Link>
               <Link
                 className="text-foreground hover:text-foreground"
-                href="/admin/products"
+                href="/products"
               >
                 Products
-              </Link>
-              <Link
-                className="text-foreground hover:text-foreground"
-                href="/admin/categories"
-              >
-                Categories
-              </Link>
-              <Link
-                className="text-foreground hover:text-foreground"
-                href="/admin/customers"
-              >
-                Customers
               </Link>
             </nav>
           </SheetContent>
@@ -141,9 +123,7 @@ export default async function AdNavbar() {
                 <>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Link href="/settings">Settings</Link>
-                  </DropdownMenuItem>
+                  <DropdownMenuItem>Settings</DropdownMenuItem>
                   <DropdownMenuItem>Support</DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>

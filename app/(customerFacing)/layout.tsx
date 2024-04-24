@@ -1,3 +1,4 @@
+import CusNavbar from "@/components/Custommers/CusNavbar";
 import React from "react";
 
 export default function CustomerLayout({
@@ -7,6 +8,7 @@ export default function CustomerLayout({
 }) {
   return (
     <>
+      <CusNavbar />
       <main className="container my-6">{children}</main>
     </>
   );
