@@ -57,12 +57,6 @@ export default async function AdNavbar() {
           </Link>
           <Link
             className="text-foreground transition-colors hover:text-foreground"
-            href="/admin/categories"
-          >
-            Categories
-          </Link>
-          <Link
-            className="text-foreground transition-colors hover:text-foreground"
             href="/admin/customers"
           >
             Customers
@@ -102,12 +96,6 @@ export default async function AdNavbar() {
                 href="/admin/products"
               >
                 Products
-              </Link>
-              <Link
-                className="text-foreground hover:text-foreground"
-                href="/admin/categories"
-              >
-                Categories
               </Link>
               <Link
                 className="text-foreground hover:text-foreground"
