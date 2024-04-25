@@ -22,12 +22,13 @@ import {
   RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Image from "next/image";
 
 export default async function AdNavbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
-    <div className="flex  w-full flex-col">
+    <div className="flex w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
@@ -61,6 +62,12 @@ export default async function AdNavbar() {
           >
             Customers
           </Link>
+          <Link
+            className="text-foreground transition-colors hover:text-foreground"
+            href="/"
+          >
+            BackToStore
+          </Link>
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -77,7 +84,7 @@ export default async function AdNavbar() {
             <nav className="grid gap-6 text-lg font-medium">
               <Link
                 className="flex items-center gap-2 text-lg font-semibold"
-                href="#"
+                href="/admin"
               >
                 <Package2Icon className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
@@ -103,6 +110,9 @@ export default async function AdNavbar() {
               >
                 Customers
               </Link>
+              <Link className="text-foreground hover:text-foreground" href="/">
+                Back to Store
+              </Link>
             </nav>
           </SheetContent>
         </Sheet>
@@ -120,7 +130,17 @@ export default async function AdNavbar() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button className="rounded-full" size="icon" variant="secondary">
-                <UserCircleIcon className="h-5 w-5" />
+                {user?.picture ? (
+                  <Image
+                    src={user.picture}
+                    alt="User profile picture"
+                    className="rounded-full"
+                    width={24}
+                    height={24}
+                  />
+                ) : (
+                  <UserCircleIcon className="h-5 w-5" />
+                )}
                 <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>

@@ -23,6 +23,7 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import CusNavShowAdmin from "./CusNavShowAdmin";
+import Image from "next/image";
 
 export default async function CusNavbar() {
   const { getUser } = getKindeServerSession();
@@ -59,7 +60,13 @@ export default async function CusNavbar() {
           >
             Products
           </Link>
-          <CusNavShowAdmin/>
+          <Link
+            className="text-foreground transition-colors hover:text-foreground"
+            href="/about"
+          >
+            About
+          </Link>
+          <CusNavShowAdmin />
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -99,12 +106,7 @@ export default async function CusNavbar() {
               >
                 Products
               </Link>
-              <Link
-                className="text-foreground hover:text-foreground"
-                href="/admin"
-              >
-                Admin Page
-              </Link>
+              <CusNavShowAdmin />
             </nav>
           </SheetContent>
         </Sheet>
@@ -122,7 +124,17 @@ export default async function CusNavbar() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button className="rounded-full" size="icon" variant="secondary">
-                <UserCircleIcon className="h-5 w-5" />
+                {user?.picture ? (
+                  <Image
+                    alt="User avatar"
+                    className="rounded-full"
+                    height={24}
+                    src={user.picture}
+                    width={24}
+                  />
+                ) : (
+                  <UserCircleIcon className="h-5 w-5" />
+                )}
                 <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>

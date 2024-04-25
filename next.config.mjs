@@ -6,6 +6,10 @@ const nextConfig = {
         hostname: "utfs.io",
         port: "",
       },
+      {
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+      },
     ],
   },
 };
