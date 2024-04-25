@@ -99,3 +99,40 @@ export async function deleteUser(id: string) {
   revalidatePath("/");
   revalidatePath("/admin/customers");
 }
+
+export async function CreateCategory(formData: FormData) {
+  const name = formData.get("category") as string;
+  const description = formData.get("categoryDec") as string;
+
+  const data = await db.category.create({
+    data: {
+      name: name,
+      description: description,
+    },
+  });
+
+  revalidatePath("/admin/categories");
+  revalidatePath("/");
+  return redirect("/admin/categories");
+}
+
+export async function deleteCatagories(id: string) {
+  try {
+    const catagories = await db.category.findUnique({ where: { id } });
+    if (catagories == null) return notFound();
+
+    await db.category.deleteMany({
+      where: {
+        id: catagories.id,
+      },
+    });
+
+    await db.category.delete({ where: { id } });
+
+    revalidatePath("/");
+    revalidatePath("/admin/categories");
+  } catch (error) {
+    console.error("Error deleting Categories:", error);
+    throw error;
+  }
+}
