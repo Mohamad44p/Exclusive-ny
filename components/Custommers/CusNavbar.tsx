@@ -24,12 +24,13 @@ import {
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import CusNavShowAdmin from "./CusNavShowAdmin";
 import Image from "next/image";
+import { ModeToggle } from "./ModeToggle";
 
 export default async function CusNavbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
-    <div className="flex  w-full flex-col">
+    <div className="flex w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
@@ -145,6 +146,9 @@ export default async function CusNavbar() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>Settings</DropdownMenuItem>
                   <DropdownMenuItem>Support</DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <ModeToggle />
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <LogoutLink>Logout</LogoutLink>
@@ -157,6 +161,10 @@ export default async function CusNavbar() {
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <RegisterLink>Signup</RegisterLink>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <ModeToggle />
                   </DropdownMenuItem>
                 </>
               )}
