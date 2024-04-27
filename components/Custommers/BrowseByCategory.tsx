@@ -42,7 +42,7 @@ export default async function BrowseByCategory() {
   ];
 
   return (
-    <section className="w-full py-12  md:py-24 lg:py-32 font-Franklin">
+    <section className="w-full py-12 md:py-24 lg:py-32  font-Franklin">
       <div className="container px-4 md:px-6">
         <BrByCategoryTitles/>
         <div className="mx-auto mt-8 grid max-w-5xl items-start gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3">

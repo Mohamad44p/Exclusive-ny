@@ -19,9 +19,9 @@ export default function BrByCategoryTitles() {
         delay: 0.5 + index * 0.2,
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
+          start: "top 100%",
           end: "bottom 10%",
-          toggleActions: "play none none none",
+          toggleActions: "play reverse reverse reverse",
         },
         ease: "power4.out",
       });
