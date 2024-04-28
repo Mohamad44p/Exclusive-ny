@@ -5,18 +5,13 @@ import { SubmitButton } from "@/components/Custommers/SubmitButtons";
 import { Card, CardFooter, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { UploadDropzone } from "@/components/uploadthings/Uploadthing";
+import db from "@/db/db";
 import AdProductnewimage from "@/public/images/AdProductnewimage.png";
+import { Category } from "@prisma/client";
 import { ImageUp, Text } from "lucide-react";
 import Image from "next/image";
 import { SetStateAction, useEffect, useState } from "react";
@@ -48,7 +43,15 @@ export default function AdminCreateProductPage() {
   const [imageUrl, setImageUrl] = useState<null | string>(null);
   const [name, setName] = useState<null | string>(null);
   const [price, setPrice] = useState<null | number>(null);
+  const [category, setCategory] = useState<null | number>(null);
 
+  useEffect(() => {
+    fetch("/api/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategory(data);
+      });
+  }, []);
   return (
     <div className="max-w-[1000px] mx-auto flex gap-x-10 mt-4">
       <div className="w-[65%] flex flex-col gap-y-5">
@@ -89,6 +92,15 @@ export default function AdminCreateProductPage() {
                     value={price ?? ""}
                     onChange={(e) => setPrice(parseFloat(e.target.value))}
                   />
+                  <Label>Product Category</Label>
+                  <select name="Category">
+                    {Array.isArray(category) &&
+                      category.map((item: Category) => (
+                        <option key={item.id} value={item.id}>
+                          {item.name}
+                        </option>
+                      ))}
+                  </select>
                   <Label>Product Description</Label>
                   <Textarea
                     required
@@ -134,7 +146,7 @@ export default function AdminCreateProductPage() {
         <Card className="flex flex-col p-4">
           <div className="flex items-center gap-x-2">
             <Image className="h-10 w-10" src={AdProductnewimage} alt="pfp" />
-            <h1 className="font-medium">Posting to Reddit</h1>
+            <h1 className="font-medium">Posting to Exclusive</h1>
           </div>
           <Separator className="mt-2" />
 

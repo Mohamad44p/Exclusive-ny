@@ -56,6 +56,24 @@ export async function CreateProduct(formData: FormData) {
   const imageUrl = formData.get("imageUrl") as string | null;
   const price = parseFloat(formData.get("price") as string);
   const description = formData.get("description") as string;
+  const categoryId = formData.get("Category") as string;
+
+  let category;
+
+  const existingCategory = await db.category.findUnique({
+    where: { id: categoryId },
+  });
+
+  if (existingCategory) {
+    category = existingCategory;
+  } else {
+    category = await db.category.create({
+      data: {
+        id: categoryId,
+        name: formData.get("Category") as string,
+      },
+    });
+  }
 
   const data = await db.product.create({
     data: {
@@ -64,6 +82,11 @@ export async function CreateProduct(formData: FormData) {
       price: price,
       description: description,
       isAvailableForPurchase: false,
+      Category: {
+        connect: {
+          id: category.id,
+        },
+      },
     },
   });
 
