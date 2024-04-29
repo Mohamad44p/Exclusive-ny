@@ -7,8 +7,10 @@ import ProductHeader from "@/components/Custommers/ProductHeader";
 import db from "@/db/db";
 import { cache } from "@/lib/cache";
 import { Suspense } from "react";
+import {unstable_noStore as noStore} from "next/cache"
 
 const getProducts = () => {
+  noStore();
   return db.product.findMany({
     where: { isAvailableForPurchase: true },
     orderBy: { name: "asc" },

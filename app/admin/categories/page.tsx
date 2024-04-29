@@ -16,9 +16,11 @@ import {
 } from "@/components/ui/table";
 import db from "@/db/db";
 import { ArrowBigRight, MoreVertical } from "lucide-react";
+import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 
 async function getCategoryData() {
+  noStore();
   const data = await db.category.findMany({
     select: {
       id: true,

@@ -23,6 +23,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { CheckCircle, MoreVertical, XCircle } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function AdminProductPage() {
   const { isAuthenticated, getPermission } = getKindeServerSession();
@@ -50,6 +51,7 @@ export default async function AdminProductPage() {
 }
 
 async function ProductsTable() {
+  noStore();
   const products = await db.product.findMany({
     select: {
       id: true,

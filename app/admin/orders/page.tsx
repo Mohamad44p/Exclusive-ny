@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CheckCircle, MoreVertical, XCircle } from "lucide-react";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function OrdersPageAd() {
   const { isAuthenticated, getPermission } = getKindeServerSession();
@@ -41,6 +42,7 @@ export default async function OrdersPageAd() {
 }
 
 async function OrdersTable() {
+  noStore();
   const orders = await db.order.findMany({
     select: {
       id: true,

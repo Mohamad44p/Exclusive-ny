@@ -15,8 +15,10 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { FileEditIcon, PlusIcon, TrashIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function UsersData() {
+  noStore();
   const users = await db.user.findMany({
     select: {
       id: true,

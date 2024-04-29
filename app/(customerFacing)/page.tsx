@@ -14,9 +14,11 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+import { unstable_noStore as noStore } from "next/cache";
 
 const getMostPopularProducts = cache(
   () => {
+    noStore();
     return db.product.findMany({
       where: { isAvailableForPurchase: true },
       orderBy: { orders: { _count: "desc" } },
