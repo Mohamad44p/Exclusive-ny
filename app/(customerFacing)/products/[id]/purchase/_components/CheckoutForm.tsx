@@ -80,7 +80,7 @@ function Form({ price, productId }: { price: number; productId: string }) {
       .confirmPayment({
         elements,
         confirmParams: {
-          return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success`,
+          return_url: "https://exclusive-ny.vercel.app/stripe/purchase-success",
         },
       })
       .then(({ error }) => {
