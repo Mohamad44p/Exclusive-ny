@@ -15,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { unstable_noStore as noStore } from "next/cache";
+import FloatingImage from "@/components/Gallery/FloatingImage";
 
 const getMostPopularProducts = cache(
   () => {
@@ -57,6 +58,9 @@ export default function Home() {
           />
         </div>
         <FSection />
+        <div className="py-44">
+        <FloatingImage/>
+        </div>
       </main>
     </main>
   );
