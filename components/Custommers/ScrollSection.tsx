@@ -14,6 +14,7 @@ import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import ProductImage1 from "../../public/images/Product1image.jpg";
 import ProductImage2 from "../../public/images/product2image.jpg";
+import ProductImage3 from "../../public/images/PS5-Pro-concept.webp";
 import ProductImage4 from "../../public/images/Product4image.jpg";
 
 function ScrollSection() {
@@ -113,7 +114,7 @@ function ScrollSection() {
             <CardSection
               title="Here's everything you need in one Place"
               description="Convenience meets choice as we bring together all your essentials under one roof. Say goodbye to hopping between stores."
-              imageSrc={ProductImage1 as any}
+              imageSrc={ProductImage3 as any}
               imageAlt="ForImageForScrollSection"
             />
           </div>

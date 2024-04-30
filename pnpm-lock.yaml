@@ -13,7 +13,7 @@ importers:
         version: 2.1.1
       '@kinde-oss/kinde-auth-nextjs':
         specifier: ^2.2.3
-        version: 2.2.3(@babel/core@7.24.4)(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.2.3(@babel/core@7.24.4)(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@prisma/client':
         specifier: 5.13.0
         version: 5.13.0(prisma@5.13.0)
@@ -59,9 +59,12 @@ importers:
       '@stripe/stripe-js':
         specifier: ^3.3.0
         version: 3.3.0
+      '@studio-freight/lenis':
+        specifier: ^1.0.42
+        version: 1.0.42
       '@uploadthing/react':
         specifier: ^6.4.4
-        version: 6.4.4(@uploadthing/mime-types@0.2.7)(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(uploadthing@6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(tailwindcss@3.4.3))
+        version: 6.4.4(@uploadthing/mime-types@0.2.7)(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(react@18.2.0)(uploadthing@6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(tailwindcss@3.4.3))
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -71,6 +74,9 @@ importers:
       embla-carousel-react:
         specifier: ^8.0.2
         version: 8.0.2(react@18.2.0)
+      framer-motion:
+        specifier: ^11.1.7
+        version: 11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       gsap:
         specifier: ^3.12.5
         version: 3.12.5
@@ -82,7 +88,7 @@ importers:
         version: 0.372.0(react@18.2.0)
       next:
         specifier: 14.2.2
-        version: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -95,6 +101,9 @@ importers:
       resend:
         specifier: ^3.2.0
         version: 3.2.0
+      sass:
+        specifier: ^1.75.0
+        version: 1.75.0
       stripe:
         specifier: ^15.4.0
         version: 15.4.0
@@ -109,7 +118,7 @@ importers:
         version: 1.3.0
       uploadthing:
         specifier: ^6.9.0
-        version: 6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(tailwindcss@3.4.3)
+        version: 6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(tailwindcss@3.4.3)
       zod:
         specifier: ^3.23.0
         version: 3.23.0
@@ -1475,6 +1484,9 @@ packages:
     resolution: {integrity: sha512-dUgAsko9KoYC1U2TIawHzbkQJzPoApxCc1Qf6/j318d1ArViyh6ROHVYTxnU3RlOQL/utUD9I4/QoyiCowsgrw==}
     engines: {node: '>=12.16'}
 
+  '@studio-freight/lenis@1.0.42':
+    resolution: {integrity: sha512-HJAGf2DeM+BTvKzHv752z6Z7zy6bA643nZM7W88Ft9tnw2GsJSp6iJ+3cekjyMIWH+cloL2U9X82dKXgdU8kPg==}
+
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
 
@@ -2139,6 +2151,20 @@ packages:
     resolution: {integrity: sha512-TMKDUnIte6bfb5nWv7V/caI169OHgvwjb7V4WkeUvbQQdjr5rWKqHFiKWb/fcOwB+CzBT+qbWjvj+DVwRskpIg==}
     engines: {node: '>=14'}
 
+  framer-motion@11.1.7:
+    resolution: {integrity: sha512-cW11Pu53eDAXUEhv5hEiWuIXWhfkbV32PlgVISn7jRdcAiVrJ1S03YQQ0/DzoswGYYwKi4qYmHHjCzAH52eSdQ==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
@@ -2265,6 +2291,9 @@ packages:
   ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
+
+  immutable@4.3.5:
+    resolution: {integrity: sha512-8eabxkth9gZatlwl5TBuJnCsoTADlL6ftEr7A4qgdaTsPyreilDSnUk57SO+jfKcNtxPa22U5KK6DSeAYhpBJw==}
 
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -2931,6 +2960,11 @@ packages:
   safe-regex-test@1.0.3:
     resolution: {integrity: sha512-CdASjNJPvRa7roO6Ra/gLYBTzYzzPyyBXxIMdGW3USQLyjWEls2RgW5UBTXaQVp+OrpeCK3bLem8smtmheoRuw==}
     engines: {node: '>= 0.4'}
+
+  sass@1.75.0:
+    resolution: {integrity: sha512-ShMYi3WkrDWxExyxSZPst4/okE9ts46xZmJDSawJQrnte7M1V9fScVB+uNXOVKRBt0PggHOwoZcn8mYX4trnBw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
 
   scheduler@0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
@@ -4080,14 +4114,14 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@kinde-oss/kinde-auth-nextjs@2.2.3(@babel/core@7.24.4)(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@kinde-oss/kinde-auth-nextjs@2.2.3(@babel/core@7.24.4)(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/preset-env': 7.24.4(@babel/core@7.24.4)
       '@kinde-oss/kinde-typescript-sdk': 2.9.0
       cookie: 0.5.0
       crypto-js: 4.2.0
       jwt-decode: 3.1.2
-      next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       uncrypto: 0.1.3
@@ -4770,6 +4804,8 @@ snapshots:
 
   '@stripe/stripe-js@3.3.0': {}
 
+  '@studio-freight/lenis@1.0.42': {}
+
   '@swc/counter@0.1.3': {}
 
   '@swc/helpers@0.5.5':
@@ -4854,16 +4890,16 @@ snapshots:
 
   '@uploadthing/mime-types@0.2.7': {}
 
-  '@uploadthing/react@6.4.4(@uploadthing/mime-types@0.2.7)(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(uploadthing@6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(tailwindcss@3.4.3))':
+  '@uploadthing/react@6.4.4(@uploadthing/mime-types@0.2.7)(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(react@18.2.0)(uploadthing@6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(tailwindcss@3.4.3))':
     dependencies:
       '@uploadthing/dropzone': 0.3.1(react@18.2.0)
       '@uploadthing/shared': 6.6.0(@uploadthing/mime-types@0.2.7)
       file-selector: 0.6.0
       react: 18.2.0
       tailwind-merge: 2.3.0
-      uploadthing: 6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(tailwindcss@3.4.3)
+      uploadthing: 6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(tailwindcss@3.4.3)
     optionalDependencies:
-      next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0)
     transitivePeerDependencies:
       - '@uploadthing/mime-types'
       - solid-js
@@ -5618,6 +5654,13 @@ snapshots:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
 
+  framer-motion@11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      tslib: 2.6.2
+    optionalDependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
   fs.realpath@1.0.0: {}
 
   fsevents@2.3.3:
@@ -5756,6 +5799,8 @@ snapshots:
       entities: 4.5.0
 
   ignore@5.3.1: {}
+
+  immutable@4.3.5: {}
 
   import-fresh@3.3.0:
     dependencies:
@@ -6058,7 +6103,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0):
     dependencies:
       '@next/env': 14.2.2
       '@swc/helpers': 0.5.5
@@ -6079,6 +6124,7 @@ snapshots:
       '@next/swc-win32-arm64-msvc': 14.2.2
       '@next/swc-win32-ia32-msvc': 14.2.2
       '@next/swc-win32-x64-msvc': 14.2.2
+      sass: 1.75.0
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
@@ -6399,6 +6445,12 @@ snapshots:
       es-errors: 1.3.0
       is-regex: 1.1.4
 
+  sass@1.75.0:
+    dependencies:
+      chokidar: 3.6.0
+      immutable: 4.3.5
+      source-map-js: 1.2.0
+
   scheduler@0.23.0:
     dependencies:
       loose-envify: 1.4.0
@@ -6684,14 +6736,14 @@ snapshots:
       escalade: 3.1.2
       picocolors: 1.0.0
 
-  uploadthing@6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(tailwindcss@3.4.3):
+  uploadthing@6.9.0(next@14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(tailwindcss@3.4.3):
     dependencies:
       '@uploadthing/mime-types': 0.2.7
       '@uploadthing/shared': 6.6.0(@uploadthing/mime-types@0.2.7)
       consola: 3.2.3
       std-env: 3.7.0
     optionalDependencies:
-      next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next: 14.2.2(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0)
       tailwindcss: 3.4.3
 
   uri-js@4.4.1:

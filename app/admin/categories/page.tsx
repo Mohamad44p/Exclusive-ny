@@ -15,9 +15,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import db from "@/db/db";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ArrowBigRight, MoreVertical } from "lucide-react";
 import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 async function getCategoryData() {
   noStore();
@@ -33,6 +35,17 @@ async function getCategoryData() {
 }
 
 export default async function CategoriesPage() {
+  const { isAuthenticated, getPermission } = getKindeServerSession();
+  const isLoggedIn = await isAuthenticated();
+  if (!isLoggedIn) {
+    redirect("/api/auth/login");
+  }
+
+  const requiredPermission = await getPermission("admin-pages");
+  if (!requiredPermission?.isGranted) {
+    redirect("/");
+  }
+
   return (
     <>
       <div className="flex justify-between items-center gap-4">
@@ -64,9 +77,7 @@ async function ProductsTable() {
         {data.map((category: any) => (
           <TableRow key={category.id}>
             <TableHead>{category.name}</TableHead>
-            <TableHead>
-              {category.description ?? "No description"}
-            </TableHead>
+            <TableHead>{category.description ?? "No description"}</TableHead>
             <TableHead>
               <Link href={`/admin/categories`}>
                 <DropdownMenu>

@@ -63,7 +63,7 @@ export default async function CusNavbar() {
           </Link>
           <Link
             className="text-foreground transition-colors hover:text-foreground"
-            href="/about"
+            href="/About"
           >
             About
           </Link>

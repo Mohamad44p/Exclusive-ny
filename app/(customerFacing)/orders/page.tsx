@@ -48,12 +48,10 @@ export default async function OrderPageCus() {
               <TableHeader>Created At</TableHeader>
             </TableRow>
           </TableHead>
-          <TableBody>
-            <h1>There is No Order Found</h1>
-            <Button variant={"default"} asChild>
-              <Link href="/products">Go to Products</Link>
-            </Button>
-          </TableBody>
+          <h1>There is No Order Found</h1>
+          <Button variant={"default"} asChild>
+            <Link href="/products">Go to Products</Link>
+          </Button>
         </Table>
       </>
     );
