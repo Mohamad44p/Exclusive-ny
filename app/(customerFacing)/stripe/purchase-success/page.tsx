@@ -40,7 +40,7 @@ export default async function SuccessPage({
       });
 
       const data = await resend.emails.send({
-        from: `Support <${process.env.SENDER_EMAIL}>`,
+        from: 'Acme <onboarding@resend.dev>',
         to: user?.email ?? "User Email",
         subject: "Order Information",
         react: OrderInformation({
