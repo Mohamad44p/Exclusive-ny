@@ -85,7 +85,7 @@ export default async function SuccessPage({
           </div>
           <Button className="mt-4" size="lg" asChild>
             {isSuccess ? (
-              <a href={`/products/download/order`}>My Orders</a>
+              <a href={`https://exclusive-ny.vercel.app/orders`}>My Orders</a>
             ) : (
               <Link href={`/products/${product.id}/purchase`}>Try Again</Link>
             )}
