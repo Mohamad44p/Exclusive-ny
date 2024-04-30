@@ -21,7 +21,7 @@ export default function FSection() {
         delay: 0.5 + index * 0.2,
         scrollTrigger: {
           trigger: element,
-          start: "top 100%",
+          start: "top 80%",
           end: "bottom 10%",
           toggleActions: "play reverse reverse reverse",
         },

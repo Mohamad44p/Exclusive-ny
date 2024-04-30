@@ -5,8 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Stripe from "stripe";
+import OrderInformation from "@/email/_components/OrderInformation";
+import { Resend } from "resend";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function SuccessPage({
   searchParams,
@@ -25,6 +28,36 @@ export default async function SuccessPage({
 
   const isSuccess = paymentIntent.status === "succeeded";
   await createOrder(product.id, product.price);
+
+  if (isSuccess) {
+    try {
+      const { getUser } = getKindeServerSession();
+      const user = await getUser();
+
+      const order = await db.order.findFirst({
+        where: { userId: user?.id },
+        orderBy: { createdAt: "desc" },
+      });
+
+      const data = await resend.emails.send({
+        from: "Acme <Exclusive@gamil.com>",
+        to: user?.email ?? "User Email",
+        subject: "Order Information",
+        react: OrderInformation({
+          order: {
+            id: order?.id ?? "",
+            createdAt: order?.createdAt ?? new Date(),
+            pricePaid: order?.pricePaid ?? 0,
+          },
+          product: { name: product?.name ?? "Product Name" },
+        }),
+      });
+
+      console.log("Email sent successfully:", data);
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  }
 
   return (
     <div className="max-w-5xl w-full mx-auto space-y-8">
@@ -48,12 +81,7 @@ export default async function SuccessPage({
           </div>
           <Button className="mt-4" size="lg" asChild>
             {isSuccess ? (
-              <a
-                href={`/products/download/order
-                )}`}
-              >
-                My Orders
-              </a>
+              <a href={`/products/download/order`}>My Orders</a>
             ) : (
               <Link href={`/products/${product.id}/purchase`}>Try Again</Link>
             )}

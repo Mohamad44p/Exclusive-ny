@@ -12,6 +12,9 @@ import {
 } from "../ui/card";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
+import ProductImage1 from "../../public/images/Product1image.jpg";
+import ProductImage2 from "../../public/images/product2image.jpg";
+import ProductImage4 from "../../public/images/Product4image.jpg";
 
 function ScrollSection() {
   const sectionRef = useRef(null);
@@ -86,7 +89,7 @@ function ScrollSection() {
             <CardSection
               title="Always new Products"
               description="Discover the latest arrivals and stay ahead of the trend with our constantly updated selection."
-              imageSrc="/images/product2image.jpg"
+              imageSrc={ProductImage1 as any}
               imageAlt="HeroImageForScrollSection"
             />
           </div>
@@ -94,7 +97,7 @@ function ScrollSection() {
             <CardSection
               title="Versatility in products"
               description="Find exactly what you're looking for among our diverse range of products tailored to suit various needs and preferences."
-              imageSrc="/images/product6image.jpg"
+              imageSrc={ProductImage4 as any}
               imageAlt="SecImageForScrollSection"
             />
           </div>
@@ -102,7 +105,7 @@ function ScrollSection() {
             <CardSection
               title="The price is suitable for everyone"
               description=" Experience affordability without compromising on quality. Our competitive prices ensure that there's something for every budget."
-              imageSrc="/images/product4image.jpg"
+              imageSrc={ProductImage2 as any}
               imageAlt="TheImageForScrollSection"
             />
           </div>
@@ -110,7 +113,7 @@ function ScrollSection() {
             <CardSection
               title="Here's everything you need in one Place"
               description="Convenience meets choice as we bring together all your essentials under one roof. Say goodbye to hopping between stores."
-              imageSrc="/images/product1image.jpg"
+              imageSrc={ProductImage1 as any}
               imageAlt="ForImageForScrollSection"
             />
           </div>
