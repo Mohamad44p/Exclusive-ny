@@ -40,7 +40,7 @@ export default async function SuccessPage({
       });
 
       const data = await resend.emails.send({
-        from: 'Acme <onboarding@resend.dev>',
+        from: "Acme <onboarding@resend.dev>",
         to: user?.email ?? "User Email",
         subject: "Order Information",
         react: OrderInformation({
@@ -49,7 +49,11 @@ export default async function SuccessPage({
             createdAt: order?.createdAt ?? new Date(),
             pricePaid: order?.pricePaid ?? 0,
           },
-          product: { name: product?.name ?? "Product Name" },
+          product: {
+            name: product?.name ?? "Product Name",
+            description: product?.description ?? "Product Description",
+            imagePath: product?.imagePath ?? "Product Image Path",
+          },
         }),
       });
 

@@ -11,6 +11,8 @@ type OrderInformationProps = {
   order: { id: string; createdAt: Date; pricePaid: number };
   product: {
     name: string;
+    description: string;
+    imagePath: string;
   };
 };
 
@@ -47,10 +49,11 @@ export default function OrderInformation({
         </Row>
       </Section>
       <Section className="border border-solid border-gray-500 rounded-t-lg p-4 md:p-6 my-4">
-        <Img width="100%" alt="" src="" />
+        <Img width="100%" alt={product.name} src={product.imagePath} />
         <Row className="mt-8">
           <Column className="align-bottom">
             <Text className="text-lg font-bold m-0 mr-4">Product Name</Text>
+            <Text className="text-lg font-bold m-0 mr-4">{product.name}</Text>
           </Column>
           <Column className="align-bottom">
             <Button
@@ -65,6 +68,9 @@ export default function OrderInformation({
           <Column>
             <Text className="mb-0 text-gray-500 whitespace-nowrap text-nowrap mr-4">
               Product Description
+            </Text>
+            <Text className="mb-0 text-gray-500 whitespace-nowrap text-nowrap mr-4">
+              {product.description}
             </Text>
           </Column>
         </Row>
