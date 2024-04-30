@@ -23,7 +23,7 @@ export default function FSection() {
           trigger: element,
           start: "top 80%",
           end: "bottom 10%",
-          toggleActions: "play reverse reverse reverse",
+          toggleActions: "play none none none",
         },
         ease: "power4.out",
       });
