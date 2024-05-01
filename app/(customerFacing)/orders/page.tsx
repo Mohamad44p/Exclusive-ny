@@ -36,24 +36,31 @@ async function getOrders() {
 
 export default async function OrderPageCus() {
   const orders = await getOrders();
-  if (!orders) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user || !user.id || user === null) {
     return (
-      <>
-        <h1 className="text-3xl font-bold">Orders</h1>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableHeader>Order ID</TableHeader>
-              <TableHeader>Price Paid</TableHeader>
-              <TableHeader>Created At</TableHeader>
-            </TableRow>
-          </TableHead>
-          <h1>There is No Order Found</h1>
-          <Button variant={"default"} asChild>
-            <Link href="/products">Go to Products</Link>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <h1 className="text-3xl font-bold">Please login to see your orders</h1>
+        <Link href="/api/auth/login">
+          <Button className="mt-5" color="primary">
+            Login
           </Button>
-        </Table>
-      </>
+        </Link>
+      </div>
+    );
+  }
+  if (orders.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full">
+        <h1 className="text-3xl font-bold">No Orders Yet</h1>
+        <Link href="/products">
+          <Button className="mt-5" color="primary">
+            Shop Now
+          </Button>
+        </Link>
+      </div>
     );
   }
   return (

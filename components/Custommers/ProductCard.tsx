@@ -14,6 +14,7 @@ import { Button } from "../ui/button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,6 +82,7 @@ export function ProductCard({
     );
   }, []);
 
+  const { isAuthenticated } = useKindeBrowserClient();
   return (
     <Card className="flex overflow-hidden flex-col staggerCards opacity-0">
       <div className="relative w-full aspect-video">
@@ -103,7 +105,11 @@ export function ProductCard({
       </CardContent>
       <CardFooter>
         <Button asChild size="lg" className="w-full">
-          <Link href={`/products/${id}/purchase`}>Purchase</Link>
+          {isAuthenticated ? (
+            <Link href={`/products/${id}/purchase`}>Purchase</Link>
+          ) : (
+            <Link href="/api/auth/login">Purchase</Link>
+          )}
         </Button>
       </CardFooter>
     </Card>

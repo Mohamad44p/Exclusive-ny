@@ -58,8 +58,8 @@ export default function Home() {
           />
         </div>
         <FSection />
-        <div className="py-44">
-        <FloatingImage/>
+        <div className="hidden lg:flex py-44">
+          <FloatingImage />
         </div>
       </main>
     </main>

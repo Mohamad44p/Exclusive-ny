@@ -30,7 +30,7 @@ export default function FSection() {
     });
   }, []);
   return (
-    <section className="flex items-center justify-center gap-x-20">
+    <section className="flex lg:flex-row flex-col items-center justify-center gap-x-20">
       <div>
         <div className="flex flex-col items-center gap-y-5 my-28">
           <div className="bg-black p-5 dark:bg-orange-400  rounded-full">

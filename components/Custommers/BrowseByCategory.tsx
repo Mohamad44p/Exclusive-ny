@@ -44,14 +44,17 @@ export default async function BrowseByCategory() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32  font-Franklin">
       <div className="container px-4 md:px-6">
-        <BrByCategoryTitles/>
+        <BrByCategoryTitles />
         <div className="mx-auto mt-8 grid max-w-5xl items-start gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3">
           {data.map((category, index) => (
             <div
               key={category.id}
               className="relative group overflow-hidden rounded-lg"
             >
-              <Link className="absolute inset-0 z-10" href="#">
+              <Link
+                className="absolute inset-0 z-10"
+                href={`/category/${category.id}`}
+              >
                 <span className="sr-only">View</span>
               </Link>
               <div className="bg-[#000] rounded-lg w-full h-[3rem] mx-auto flex justify-center items-center">
@@ -66,11 +69,8 @@ export default async function BrowseByCategory() {
                   {category.name}
                 </h3>
                 <p className="text-sm">{category.description}</p>
-                <Link
-                  className="font-semibold underline underline-offset-4"
-                  href="#"
-                >
-                  Shop
+                <Link className="underline py-2" href="/products">
+                  View Products
                 </Link>
               </div>
             </div>
